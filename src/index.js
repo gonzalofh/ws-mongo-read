@@ -18,7 +18,7 @@ require('./database').connect().then(db => {
 
     const connection = request.accept('echo-protocol', request.origin);
 
-    const send = (data) => connection.sendUTF(JSON.stringify(data));
+    const send = (data) => connection.sendUTF(data);
     const emitterBuilder = require('./emitterBuilder.js')(db.find, send);
     const messageHandler = require('./messageHandler')(emitters, emitterBuilder);
 
