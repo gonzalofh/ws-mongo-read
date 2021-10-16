@@ -1,0 +1,19 @@
+{
+  "name": "ws-mongo-read",
+  "version": "1.0.0",
+  "description": "Emmits Mongo documents through a Websocket connection",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "mongodb": "^4.1.2",
+    "websocket": "^1.0.34"
+  }
+}
