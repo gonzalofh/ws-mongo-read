@@ -17,9 +17,10 @@ module.exports = (emitters, emitterBuilder) => {
 
       const collection = msgData['collection'];
       const query = msgData['query'] || "{}";
+      const limit = msgData['limit'];
       const responseType = msgData['responseType'] || collection;
       const interval = msgData['interval'] || 1000;
-      const em = emitterBuilder(collection, query, responseType, interval);
+      const em = emitterBuilder(collection, query, limit, responseType, interval);
       em.run();
       emitters.push(em);
 

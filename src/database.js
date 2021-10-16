@@ -14,8 +14,8 @@ module.exports = {
     const db = client.db(mongoConfig.dbName);
 
     return {
-      find(collectionName, query) {
-        return db.collection(collectionName).find(query).stream();
+      find(collectionName, query, limit) {
+        return db.collection(collectionName).find(query).limit(limit).stream();
       }
     }
   }

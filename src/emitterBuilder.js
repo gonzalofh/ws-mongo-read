@@ -2,10 +2,10 @@ const emitter = require('./emitter.js');
 
 module.exports = (find, send) => {
 
-  return (collection, query, responseType, interval) => {
+  return (collection, query, limit, responseType, interval) => {
 
     const id = Date.now();
-    const operation = () => find(collection, JSON.parse(query))
+    const operation = () => find(collection, JSON.parse(query), limit)
       .on('data', (data) => send(JSON.stringify({ emitterId: id, type: responseType, value: data })));
 
     return emitter(id, operation, interval);
