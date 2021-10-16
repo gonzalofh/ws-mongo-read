@@ -18,7 +18,7 @@ module.exports = (emitters, emitterBuilder) => {
       const collection = msgData['collection'];
       const query = msgData['query'] || {};
       const sort = msgData['sort'] || {};
-      const limit = msgData['limit'];
+      const limit = msgData['limit'] || 0;
       const responseType = msgData['responseType'] || collection;
       const interval = msgData['interval'] || 1000;
       const em = emitterBuilder(collection, query, sort, limit, responseType, interval);
