@@ -24,7 +24,6 @@ module.exports = (emitters, emitterBuilder) => {
 
     } else if (operation === 'stop') {
 
-      console.log(emitters);
       const emitterId = parseInt(msgData['emitterId']);
       const i = emitters.findIndex(em => em.id === emitterId);
 
