@@ -1,3 +1,4 @@
+const emitter = require('./emitter');
 const messageIsValid = require('./messageIsValid');
 
 module.exports = (emitters, emitterBuilder) => {
@@ -24,15 +25,28 @@ module.exports = (emitters, emitterBuilder) => {
 
     } else if (operation === 'stop') {
 
-      const emitterId = parseInt(msgData['emitterId']);
-      const i = emitters.findIndex(em => em.id === emitterId);
+      const emId = msgData['emitterId'];
 
-      if (i < 0) {
-        console.error('emitter id was not found');
-        return;
+      if (emId === '*') {
+
+        emitters.forEach(em => {
+          em.stop();
+        });
+        emitters = [];
+
       } else {
-        emitters[i].stop();
-        emitters.splice(i, 1);
+
+        const emitterId = parseInt(emId);
+        const i = emitters.findIndex(em => em.id === emitterId);
+  
+        if (i < 0) {
+          console.error('emitter id was not found');
+          return;
+        } else {
+          emitters[i].stop();
+          emitters.splice(i, 1);
+        }
+
       }
 
     }
